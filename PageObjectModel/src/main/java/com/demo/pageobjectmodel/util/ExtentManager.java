@@ -22,7 +22,7 @@ public class ExtentManager {
 
 			
 			extent.loadConfig(new File(System.getProperty("user.dir")+"//ReportsConfig.xml"));
-			// optional
+			 //optional
 			extent.addSystemInfo("Selenium Version", "2.53.0").addSystemInfo(
 					"Environment", "QA");
 		}

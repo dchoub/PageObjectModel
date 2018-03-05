@@ -1,43 +1,47 @@
 package com.demo.pageobjectmodel.testcases.base;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.SkipException;
 
 import com.demo.pageobjectmodel.util.Constants;
 import com.demo.pageobjectmodel.util.ExtentManager;
+import com.demo.pageobjectmodel.util.Xls_Reader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class Basetest {
 	
 	public ExtentReports extent = ExtentManager.getInstance();
 	public ExtentTest test;
+
 	public WebDriver driver;
+	public Xls_Reader xls = new Xls_Reader (Constants.Data_Path);
 	
-	WebDriver mozilla=null;
-	WebDriver chrome=null;
-	WebDriver ie=null;
+	
 	
      public void openBrowser(String browserType){
 		
 		
-		if(browserType.equals("Mozilla") && mozilla==null){
+		if(browserType.equals("Mozilla")){
 			driver = new FirefoxDriver();
-			mozilla=driver;
-		}else if(browserType.equals("Mozilla") && mozilla!=null){
-			driver=mozilla;
-		}else if(browserType.equals("Chrome") && chrome==null){
+			
+		}else if(browserType.equals("Chrome")){
 		System.setProperty("webdriver.chrome.driver",Constants.CHROME_DRIVER_EXE);
 			
 			driver=new ChromeDriver();
-			chrome=driver;
-			
-		}else if(browserType.equals("Chrome") && chrome!=null){
-			driver=chrome;
-		}
+			}
 		
 		else if(browserType.equals("IE")){
 			// set the IE server exe path and initialize
@@ -47,5 +51,30 @@ public class Basetest {
 		// implicit wait
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
+     
+     public void reportFailure(String failmessage){
+    	 test.log(LogStatus.FAIL, failmessage);
+    	 takeScreenShot();
+    	 Assert.fail(failmessage);
+    	 
+    	 
+     }
+     
+     public void takeScreenShot(){
+ 		Date d=new Date();
+ 		String screenshotFile=d.toString().replace(":", "_").replace(" ", "_")+".png";
+ 		String filePath=Constants.REPORTS_PATH+"screenshots//"+screenshotFile;
+ 		// store screenshot in that file
+ 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
+ 		try {
+ 			FileUtils.copyFile(scrFile, new File(filePath));
+ 		} catch (IOException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+ 		test.log(LogStatus.INFO,test.addScreenCapture(filePath));
+ 	}
+     
+    
 }

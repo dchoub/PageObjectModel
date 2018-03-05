@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import com.demo.pageobjectmodel.base.Basepage;
 import com.relevantcodes.extentreports.ExtentTest;
 
-public class Landingpage extends Basepage {
-
+public class Detaildpage extends Basepage {
 	
-	public Landingpage(WebDriver driver, ExtentTest test){
+	public Detaildpage(WebDriver driver, ExtentTest test){
 	super(driver,test);
-}
+	}
+
 }

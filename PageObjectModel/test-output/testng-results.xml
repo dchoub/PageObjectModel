@@ -2,16 +2,27 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="26409" started-at="2018-02-15T18:27:52Z" finished-at="2018-02-15T18:28:19Z">
+  <suite name="Default suite" duration-ms="32452" started-at="2018-03-05T15:11:40Z" finished-at="2018-03-05T15:12:12Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="26409" started-at="2018-02-15T18:27:52Z" finished-at="2018-02-15T18:28:19Z">
-      <class name="com.demo.pageobjectmodel.testcases.LandingpageTest">
-        <test-method status="PASS" signature="testlandingpage()[pri:0, instance:com.demo.pageobjectmodel.testcases.LandingpageTest@59494225]" name="testlandingpage" duration-ms="26382" started-at="2018-02-15T18:27:52Z" finished-at="2018-02-15T18:28:19Z">
+    <test name="Default test" duration-ms="32452" started-at="2018-03-05T15:11:40Z" finished-at="2018-03-05T15:12:12Z">
+      <class name="com.demo.pageobjectmodel.testcases.Verify_Till_Paymen">
+        <test-method status="PASS" signature="Verify_Till_PaymentPage(java.util.Hashtable)[pri:0, instance:com.demo.pageobjectmodel.testcases.Verify_Till_Paymen@625732]" name="Verify_Till_PaymentPage" duration-ms="30949" started-at="2018-03-05T20:41:40Z" data-provider="getData" finished-at="2018-03-05T20:42:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Item=Dresses, Runmode=Y, Subitems=}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testlandingpage -->
-      </class> <!-- com.demo.pageobjectmodel.testcases.LandingpageTest -->
+        </test-method> <!-- Verify_Till_PaymentPage -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.demo.pageobjectmodel.testcases.Verify_Till_Paymen@625732]" name="quit" is-config="true" duration-ms="1473" started-at="2018-03-05T20:42:11Z" finished-at="2018-03-05T20:42:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- com.demo.pageobjectmodel.testcases.Verify_Till_Paymen -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
