@@ -28,6 +28,9 @@ public class Constants {
 	public static final String  RUNMODE_COL ="Runmode";
 	public static final String TESTCASE_SHEET = "TestCases";
 	
+	//Grid
+	public static final boolean GRID_RUN =true;
+	
 	
 
 	

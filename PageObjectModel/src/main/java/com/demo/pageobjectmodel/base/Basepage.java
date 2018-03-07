@@ -111,6 +111,22 @@ public class Basepage {
 
 
 	}
+	public void MouseHoverOnElement(String object)  {
+		test.log(LogStatus.INFO, "Driver will mouser hover on " +object);
+
+		Actions action = new Actions(driver);
+		WebElement element =  driver.findElement(By.xpath(object));
+		action.moveToElement(element).perform();
+		wait(5);
+		test.log(LogStatus.INFO, "Mouse hover on " +object);
+		wait(5);
+
+
+
+	}
+
+	
+	
 
 
 }

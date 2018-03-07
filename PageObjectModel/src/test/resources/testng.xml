@@ -1,0 +1,16 @@
+<suite name="SuiteName" parallel="tests">
+	<test name="Login Test" allow-return-values="true">
+		<classes>
+			<class name="com.demo.pageobjectmodel.testcases.Loginpagetest" />
+		</classes>
+	</test>
+	
+	<test name="Automation practice test" allow-return-values="true">
+		<classes>
+			<class name="com.demo.pageobjectmodel.testcases.Verify_Till_Paymen" />
+		</classes>
+	</test>
+	
+	
+</suite>
+

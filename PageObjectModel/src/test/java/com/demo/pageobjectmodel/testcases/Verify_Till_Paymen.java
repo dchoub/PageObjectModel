@@ -2,8 +2,6 @@ package com.demo.pageobjectmodel.testcases;
 
 import java.util.Hashtable;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.demo.pageobjectmodel.pages.Auto_Launching;
+import com.demo.pageobjectmodel.pages.Detaildpage;
 import com.demo.pageobjectmodel.testcases.base.Basetest;
 import com.demo.pageobjectmodel.util.Constants;
 import com.demo.pageobjectmodel.util.DataUtill;
@@ -54,6 +53,11 @@ public class Verify_Till_Paymen extends Basetest {
 		    {
 		    	test.log(LogStatus.PASS, "user navigate to " +data.get("Item") );
 		    }
+		    
+		    Detaildpage detailed = new Detaildpage(driver,test);
+		    PageFactory.initElements(driver, detailed);
+		    detailed.selectProduct(data.get("SelectProduct"));
+		    
 	}
 	
 	

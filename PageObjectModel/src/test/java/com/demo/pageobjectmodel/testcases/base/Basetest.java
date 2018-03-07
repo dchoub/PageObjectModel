@@ -2,6 +2,7 @@ package com.demo.pageobjectmodel.testcases.base;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -11,8 +12,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
-import org.testng.SkipException;
 
 import com.demo.pageobjectmodel.util.Constants;
 import com.demo.pageobjectmodel.util.ExtentManager;
@@ -31,21 +33,43 @@ public class Basetest {
 	
 	
 	
-     public void openBrowser(String browserType){
-		
-		
-		if(browserType.equals("Mozilla")){
-			driver = new FirefoxDriver();
-			
-		}else if(browserType.equals("Chrome")){
-		System.setProperty("webdriver.chrome.driver",Constants.CHROME_DRIVER_EXE);
-			
-			driver=new ChromeDriver();
+	public void openBrowser(String browserType){
+
+		if (!Constants.GRID_RUN){
+			if(browserType.equals("Mozilla")){
+				driver = new FirefoxDriver();
+
+			}else if(browserType.equals("Chrome")){
+				System.setProperty("webdriver.chrome.driver",Constants.CHROME_DRIVER_EXE);
+
+				driver=new ChromeDriver();
 			}
-		
-		else if(browserType.equals("IE")){
-			// set the IE server exe path and initialize
+
+			else if(browserType.equals("IE")){
+				// set the IE server exe path and initialize
+			}
 		}
+		else{//Grid
+			DesiredCapabilities  cap = null;
+			if(browserType.equals("Mozilla")){
+				cap = DesiredCapabilities.firefox();
+				cap.setBrowserName("firefox");
+				cap.setJavascriptEnabled(true);
+				cap.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+			}else if(browserType.equals("Chrome")){
+				cap = DesiredCapabilities.chrome();
+				cap.setBrowserName("chrome");
+				cap.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+
+			}
+			try{
+				driver= new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+
 		// max
 		driver.manage().window().maximize();
 		// implicit wait
