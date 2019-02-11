@@ -56,7 +56,7 @@ public class Verify_Till_Paymen extends Basetest {
 		    
 		    Detaildpage detailed = new Detaildpage(driver,test);
 		    PageFactory.initElements(driver, detailed);
-		    detailed.selectProduct(data.get("SelectProduct"));
+		   // detailed.selectProduct(data.get("SelectProduct"));
 		    
 	}
 	
